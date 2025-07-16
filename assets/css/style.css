@@ -287,7 +287,7 @@ header.scrolled .lang-switcher a {
    ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————— */
 .hero-test {
   /* Ścieżka do pliku z obrazem */
-  background-image: url("/assets/images/index tło.jpg");
+  background-image: url("/assets/images/index tło.png");
   /* Dopasowanie rozmiaru obrazka do boxa */
   background-size: cover;
   /* Wyśrodkowanie obrazka w poziomie i pionie */
