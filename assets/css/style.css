@@ -294,8 +294,6 @@ header.scrolled .lang-switcher a {
   background-position: center center;
   /* Nie powtarzaj obrazka */
   background-repeat: no-repeat;
-  /* (opcjonalnie) kolor tła, póki obrazek się załaduje */
-  background-color: #f0f0f0;
   /* (opcjonalnie) wysokość sekcji */
   min-height: 500px;
 }
