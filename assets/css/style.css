@@ -294,8 +294,6 @@ header.scrolled .lang-switcher a {
   background-position: center center;
   /* Nie powtarzaj obrazka */
   background-repeat: no-repeat;
-  /* (opcjonalnie) kolor tła, póki obrazek się załaduje */
-  background-color: #f0f0f0;
   /* (opcjonalnie) wysokość sekcji */
   min-height: 500px;
 }
@@ -1905,6 +1903,7 @@ header.scrolled .lang-switcher a {
 .cookies-block {
   margin-bottom: var(--space-lg);
 }
+<<<<<<< HEAD
 
 /* ———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
    10 ARTICLES
@@ -1970,3 +1969,5 @@ header.scrolled .lang-switcher a {
   margin-bottom: var(--space-lg);
   font-size: 1.4rem;
 }
+=======
+>>>>>>> 1766744954717a08079b1b01667eb9660fde7d9f
