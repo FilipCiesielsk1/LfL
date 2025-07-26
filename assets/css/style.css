@@ -294,6 +294,8 @@ header.scrolled .lang-switcher a {
   background-position: center center;
   /* Nie powtarzaj obrazka */
   background-repeat: no-repeat;
+  /* (opcjonalnie) kolor tła, póki obrazek się załaduje */
+  background-color: #f0f0f0;
   /* (opcjonalnie) wysokość sekcji */
   min-height: 500px;
 }
@@ -349,7 +351,7 @@ header.scrolled .lang-switcher a {
 
 .hero-quote footer {
   font-size: 1.05rem;
-  color: var(--color-muted);
+  color: var(--color-less-muted);
   text-align: right;
   margin-top: var(--space-sm);
   font-style: normal;   /* żeby autor nie był kursywą */
@@ -512,7 +514,7 @@ header.scrolled .lang-switcher a {
 .about-content {
   max-width: 1500px;
   margin: 0 auto;
-  padding: var(--space-xl) var(--space-md);
+  padding: var(--space-xl) var(--space-md) var(--space-md);
 }
 
 .about-content > h1 {
@@ -659,73 +661,29 @@ header.scrolled .lang-switcher a {
 }
 
 
-/* —————————————————————————————————————————
-   07d AWARDS SECTION: Wyróżnienia
-   ————————————————————————————————————————— */
-/* .awards-section {
-  max-width: 1600px;
-  margin-top: var(--space-lg);
-  margin-bottom: var(--space-lg);
-  padding: 0 var(--space-md);
-}
-
-.awards-quotes {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: var(--space-xl);
-  margin-bottom: var(--space-xl);
-}
-
-.awards-quotes blockquote {
-  position: relative;
-  padding: var(--space-md);
-  border-left: 6px solid var(--color-primary);
-  background-color: #f9f9f9;
-  border-radius: var(--radius-sm);
-  transition: 0.3s ease;
-}
-
-.awards-quotes blockquote:hover {
-  transform: scale(1.05);
-}
-
-.awards-quotes blockquote p {
-  margin: 0 0 var(--space-sm) 0;
-  font-size: 1.5rem;
-  font-style: italic;
-}
-
-.awards-quotes blockquote footer {
-  font-size: 1.1rem;
-  color: var(--color-muted);
-  text-align: right;
-}
-
-.awards-logos {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: var(--space-lg);
-  padding-bottom: var(--space-xl);
-}
-
-.awards-logos img {
-  height: 150px;
-  object-fit: contain;
-  filter: grayscale(100%);
-  transition: filter 0.3s ease;
-}
-
-.awards-logos img:hover {
-  filter: none;
-} */
-
 
 /* 07d AWARDS: rozbudowany grid wokół dwóch logotypów */
 .awards-section {
-  padding: var(--space-lg) var(--space-md);
+  padding: var(--space-lg) 15% var(--space-xxl);
+  position: relative;
+  overflow: hidden;
+  background-color: transparent;
+  transition: background-color 1.2s ease-out;
 }
+.awards-section.is-visible {
+  background-color: rgba(73,0,147,0.05);
+}
+.awards-section h2 {
+  padding-bottom: var(--space-lg);
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 1.5s ease-out 0.3s, transform 1.5s ease-out 0.3s;
+}
+.awards-section.is-visible h2 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 .awards-grid1 {
   display: grid;
@@ -791,13 +749,13 @@ header.scrolled .lang-switcher a {
   transform: scale(1.05);
 }
 
-/* podstawowe style cytatów zostają takie jak wcześniej, np.: */
+/* ---- PODSTAWOWE STYLE CYTATÓW ---- */
 .quote {
   background: #f9f9f9;
   padding: var(--space-md);
-  /* border-left: 6px solid var(--color-primary);
-  border-radius: var(--radius-sm); */
-  transition: transform 0.3s ease;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, opacity 0.6s ease-out 0s, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -805,16 +763,68 @@ header.scrolled .lang-switcher a {
   line-height: 1.4;
   max-width: 400px;
 }
-.quote:hover {
-  transform: scale(1.03);
-}
 .quote footer {
   font-size: 1.1rem;
   color: var(--color-less-muted);
   text-align: right;
 }
+/* animacja hover (bez żadnego delay) */
+.quote:hover {
+  transform: scale(1.03);
+}
 
-/* 07d AWARDS: nowy grid wokół jednego loga =====================================================================================*/
+/* ---- POZYCJONOWANIE POCZĄTKOWE PRZED SCROLLEM ---- */
+.awards-section .quote,
+.awards-section .logo-center {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* ---- ANIMACJA PO DODANIU .is-visible ---- */
+.awards-section.is-visible .quote.q1 {
+  transition: opacity 0.6s ease-out 0.1s, transform 0.6s ease-out 0.1s, box-shadow 0.2s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+.awards-section.is-visible .quote.q2 {
+  transition: opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s, box-shadow 0.2s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+.awards-section.is-visible .quote.q3 {
+  transition: opacity 0.6s ease-out 0.3s, transform 0.6s ease-out 0.3s, box-shadow 0.2s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+.awards-section.is-visible .logo-center {
+  transition: opacity 0.6s ease-out 0.4s, transform 0.6s ease-out 0.4s, box-shadow 0.2s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+.awards-section.is-visible .quote.q4 {
+  transition: opacity 0.6s ease-out 0.5s, transform 0.6s ease-out 0.5s, box-shadow 0.2s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+.awards-section.is-visible .quote.q5 {
+  transition: opacity 0.6s ease-out 0.6s, transform 0.6s ease-out 0.6s, box-shadow 0.2s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+.awards-section.is-visible .quote.q6 {
+  transition: opacity 0.6s ease-out 0.7s, transform 0.6s ease-out 0.7s, box-shadow 0.2s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+.awards-section.is-visible .quote.q7 {
+  transition: opacity 0.6s ease-out 0.8s, transform 0.6s ease-out 0.8s, box-shadow 0.2s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+.awards-section .quote:hover {
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+}
+
 
 .knowledge-page {
   margin: 0 11%; 
@@ -1678,11 +1688,14 @@ header.scrolled .lang-switcher a {
 }
 
 .practice-section.dla-kogo-pracujemy .clients-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  /* display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); */
+  display: flex;
   gap: var(--space-xl);
   align-items: center;
   justify-items: center;
+  align-content: center;
+  justify-content: center;
   margin-bottom: var(--space-lg);
 }
 
@@ -1691,6 +1704,7 @@ header.scrolled .lang-switcher a {
   flex-direction: column;
   align-items: center;
   gap: var(--space-sm);
+  max-width: 15%;
 }
 
 .practice-section.dla-kogo-pracujemy .client-item img {
@@ -1847,7 +1861,7 @@ header.scrolled .lang-switcher a {
 .contact-card p {
   margin: 0;
   font-size: 1.05rem;
-  text-align: center;
+  text-align: start;
 }
 .contact-card::before {
   content: "";
@@ -1903,7 +1917,6 @@ header.scrolled .lang-switcher a {
 .cookies-block {
   margin-bottom: var(--space-lg);
 }
-<<<<<<< HEAD
 
 /* ———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
    10 ARTICLES
@@ -1969,5 +1982,3 @@ header.scrolled .lang-switcher a {
   margin-bottom: var(--space-lg);
   font-size: 1.4rem;
 }
-=======
->>>>>>> 1766744954717a08079b1b01667eb9660fde7d9f

@@ -13,18 +13,41 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// LANGUAGE SWITCHER ACTIVE STATE
+// // LANGUAGE SWITCHER ACTIVE STATE
+// document.addEventListener('DOMContentLoaded', () => {
+//   const params = new URLSearchParams(window.location.search);
+//   const lang = params.get('lang') || 'pl';
+//   document.querySelectorAll('.lang-switcher a').forEach(a => {
+//     if (a.getAttribute('href').includes(`lang=${lang}`)) {
+//       a.classList.add('active');
+//     } else {
+//       a.classList.remove('active');
+//     }
+//   });
+// });
+
+
+// —————————————————————————————————————————
+// ANIMACJA awards section
+// —————————————————————————————————————————
 document.addEventListener('DOMContentLoaded', () => {
-  const params = new URLSearchParams(window.location.search);
-  const lang = params.get('lang') || 'pl';
-  document.querySelectorAll('.lang-switcher a').forEach(a => {
-    if (a.getAttribute('href').includes(`lang=${lang}`)) {
-      a.classList.add('active');
-    } else {
-      a.classList.remove('active');
-    }
+  const awards = document.querySelector('.awards-section');
+  if (!awards) return;
+
+  const io = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.2
   });
+
+  io.observe(awards);
 });
+
 
 
 
