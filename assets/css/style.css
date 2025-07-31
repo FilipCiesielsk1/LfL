@@ -1,4 +1,4 @@
- /* style.css */
+/* style.css */
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poiret+One&family=Quicksand:wght@300..700&display=swap');
 :root {
   /* COLORS */
@@ -824,7 +824,9 @@ header.scrolled .lang-switcher a {
 .awards-section .quote:hover {
   box-shadow: 0 6px 18px rgba(0,0,0,0.3);
 }
-
+.fiolet {
+  color: var(--color-secondary)
+}
 
 .knowledge-page {
   margin: 0 11%; 
