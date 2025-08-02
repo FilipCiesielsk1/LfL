@@ -140,6 +140,48 @@ header.scrolled .logo img {
   transform: scale(1.04);
 }
 
+nav li.has-dropdown {
+  position: relative;
+}
+nav li .dropdown {
+  position: absolute;
+  top: 100%;
+  left: -12.5%;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  flex-direction: column;
+  background-color: var(--color-bg);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm) 0;
+  min-width: 200px;
+  z-index: 1000;
+  gap: 0;
+  text-align: center;
+  transition: 
+    opacity 0.3s ease-out,
+    transform 0.3s ease-out,
+    visibility 0.3s ease-out;
+}
+nav li .dropdown li {
+  width: 100%;
+  height: auto;
+}
+nav li .dropdown a {
+  width: 100%;
+  display: block;
+  padding: var(--space-md) var(--space-md);
+  font-size: var(--font-base-size);
+  color: var(--color-text);
+  white-space: nowrap;
+}
+nav li.has-dropdown:hover > .dropdown,
+nav li.has-dropdown:focus-within > .dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
 
 nav ul {
   list-style: none;  /* usuń kropki */
@@ -837,7 +879,7 @@ header.scrolled .lang-switcher a {
    08d2 KNOWLEDGE PAGE: Sekcja Dla Biznesu
 —————————————————————————————————————----------------------------------------------------------------------———— */
 .business-section {
-  margin: var(--space-xl) 0 var(--space-lg) 0;   /* analogicznie do publikacji */
+  margin: var(--space-xl) 0 var(--space-xxl) 0;
   padding: 0;
 }
 
@@ -990,7 +1032,7 @@ header.scrolled .lang-switcher a {
 ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————— */
 
 .publications-section {
-  margin: var(--space-xl) 0 var(--space-lg) 0;
+  margin: var(--space-xl) 0 var(--space-xxl) 0;
 }
 
 .publications-section > h2 {
@@ -1134,7 +1176,7 @@ header.scrolled .lang-switcher a {
    08d3 KNOWLEDGE PAGE: Sekcja Dla Lekarzy
 ———————————————————————————————————------------------------------------------------------------—————— */
 .doctors-section {
-  margin: var(--space-xl) 0 var(--space-lg) 0;
+  margin: var(--space-xl) 0 var(--space-xxl) 0;
 }
 
 .doctors-section > h2 {
