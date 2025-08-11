@@ -117,23 +117,22 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 8%;
+  padding: 0 5%;
   transition: padding 0.7s ease, margin-bottom 0.7s ease;
 }
 
 .logo img {
-  height: 11rem;
+  height: 176px;
   transition: height 0.7s ease, transform 0.3s ease;
   transform-origin: center center;
 }
 
 header.scrolled {
-  /* padding: var(--space-xs) 14%; */
   margin-bottom: var(--space-xl);
 }
 
 header.scrolled .logo img {
-  height: 6.5rem; /* pomniejszenie do 70% */
+  height: 6.5rem;
 }
 
 .logo img:hover {
@@ -243,7 +242,7 @@ nav a:focus:not(:hover)::after {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-  padding: var(--space-sm) var(--space-md);
+  padding: var(--space-sm);
   border: 1px solid var(--color-primary);
   border-radius: var(--radius-sm);
   color: var(--color-primary);
@@ -261,7 +260,6 @@ nav a:focus:not(:hover)::after {
 .linkedin-btn span {
   transition: 0.3s ease;
 }
-/* gradientowa nakładka, zaczyna poza widokiem (od dołu) */
 .linkedin-btn::before {
   content: "";
   position: absolute;
@@ -276,15 +274,15 @@ nav a:focus:not(:hover)::after {
     var(--color-primary) 100%
   );
   transition: bottom 0.45s ease;
-  z-index: -1; /* pod tekstem i ikoną */
+  z-index: -1;
 }
 
 /* efekt hover */
 .linkedin-btn:hover::before {
-  bottom: 0;           /* „wjeżdża” od dołu */
+  bottom: 0;
 }
 .linkedin-btn:hover {
-  color: var(--color-bg); /* tekst i ikona na biało */
+  color: var(--color-bg);
 }
 .linkedin-btn:hover img {
   filter: brightness(0) invert(1);
@@ -294,7 +292,6 @@ nav a:focus:not(:hover)::after {
 .lang-switcher {
   display: flex;
   align-items: center;
-  margin-left: var(--space-lg);
   font-family: var(--font-sans);
 }
 .lang-switcher a {
