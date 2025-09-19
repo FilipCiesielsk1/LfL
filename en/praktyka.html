@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Monika Duszyńska • Law for Lifesciences</title>
-  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/style.css" media="screen and (min-width: 1020px)">
+  <link rel="stylesheet" href="../assets/css/mobile style.css" media="screen and (max-width: 1019px)">
   <link rel="icon" href="../assets/images/favicon.ico">
 
   <script defer src="../assets/js/main.js"></script>
@@ -17,13 +18,19 @@
        <img src="../assets/images/Logo_MD_RGB_no_bg.png" alt="Life for Sciences logo">
       </a>
     </div>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-menu" aria-label="Open menu">
+      <span class="bar" aria-hidden="true"></span>
+      <span class="bar" aria-hidden="true"></span>
+      <span class="bar" aria-hidden="true"></span>
+    </button>
     <nav>
-      <ul>
+      <ul id="primary-menu">
         <li><a href="kim-jestesmy.html">WHO WE ARE</a></li>
         <li><a href="praktyka.html">PRACTICE AREAS</a></li>
         <li class="has-dropdown">
           <a href="dla-biznesu.html">SHARING OUR EXPERTISE</a>
-          <ul class="dropdown">
+          <button class="submenu-toggle" aria-expanded="false" aria-controls="submenu-expertise" aria-label="Toggle submenu"></button>
+          <ul class="dropdown" id="submenu-expertise">
             <li><a href="dla-biznesu.html">For Business</a></li>
             <li><a href="publikacje-i-konferencje.html">Scientific Publications and Conferences</a></li>
             <li><a href="dla-lekarzy-i-decydujacych.html">For the Physicians and Policy-Makers</a></li>
@@ -31,7 +38,7 @@
           </ul>
         </li>
         <li><a href="kontakt.html">CONTACT DETAILS</a></li>
-        <li>
+        <li id="LI">
           <div class="header-social">
             <a href="https://www.linkedin.com/in/monika-duszy%C5%84ska-2bab84b/"
               target="_blank" rel="noopener"
@@ -45,7 +52,7 @@
           <div class="lang-switcher">
             <a href="../praktyka.html">PL</a>
             <span aria-hidden="true">|</span>
-            <a href="en/praktyka.html" class="active">EN</a>
+            <a href="praktyka.html" class="active">EN</a>
           </div>
         </li>
       </ul>
@@ -56,19 +63,19 @@
  <main class="practice-page">
 
     <section class="practice-section co-robimy">
-      <h2>What we do</h2>
+      <h2>What We Do?</h2>
       <div class="two-col">
         <ul class="what-list">
-          <p><b>We support companies from the pharmaceutical sector and medical devices.</b></p>
-          <p>We offer comprehensive legal services at every stage of product life:</p>
-          <li>R&amp;D and clinical studies</li>
-          <li>Registration, production, marketing and advertising</li>
-          <li>launch and reimbursement</li>
-          <li>Distribution, sale and compliance</li>
-          <p>Our expertise supported by 25 years of experience in:</p>
-          <li>sectoral regulations</li>
-          <li>compliance</li>
-          <li>almost contracts and intellectual properties</li>
+          <p><b>We support companies in the pharmaceutical and medical device sectors.</b></p>
+          <p>We provide comprehensive legal services at every stage of a product’s lifecycle:</p>
+          <li>R&amp;D and clinical trials</li>
+          <li>Registration, manufacturing, marketing and advertising</li>
+          <li>Market entry and reimbursement</li>
+          <li>Distribution, sales and compliance</li>
+          <p>Our expertise, built on many years of experience, covers:</p>
+          <li>Sector-specific regulations</li>
+          <li>Compliance</li>
+          <li>Contract law and intellectual property</li>
         </ul>
         <figure class="what-figure">
           <img src="../assets/images/co-robimy.jpg" alt="Laboratorium farmaceutyczne">
@@ -77,13 +84,13 @@
     </section>
 
     <section class="practice-section jak-pracujemy">
-      <h2>How we work</h2>
+      <h2>How We Work?</h2>
       <div class="two-col">
         <figure class="jak-figure">
           <img src="../assets/images/jak-pracujemy.jpg" alt="Spotkanie zespołu prawnego">
         </figure>
         <div class="jak-text">
-          <p><b>Our distinctive feature is in -depth knowledge not only of sector regulations and economic law, but also market practice.</b>We know and understand the problems and challenges of the medical and medical devices industry, as well as how they evolved with legislative changes and case law.</p>
+          <p><b>Our distinctive feature is in -depth knowledge not only of sector regulations and economic law, but also market practice. </b>We know and understand the problems and challenges of the medical and medical devices industry, as well as how they evolved with legislative changes and case law.</p>
           <p>We attach particular importance to the highest quality services. This means:</p>
           <ul class="jak-list">
             <li>thorough analysis of each issue, including risk and optimal solutions,</li>
@@ -96,7 +103,7 @@
     </section>
 
     <section class="practice-section dla-kogo-pracujemy full-width">
-      <h2>Whom we work for</h2>
+      <h2>Who We Work For?</h2>
       <div class="clients-grid">
         <div class="client-item">
           <img src="../assets/images/pharmacy.png" alt="Firma farmaceutyczna">
@@ -126,7 +133,7 @@
     </section>
     
     <section class="practice-section gotowe-rozwiazania">
-      <h2>Ready solutions</h2>
+      <!-- <h2>Ready solutions</h2>
       <div class="two-col">
         <div class="solutions-text">
           <p>
@@ -138,7 +145,7 @@
             <b>The customer does not have to know the "kitchen", i.e. the views of legal doctrine</b>, and our role is to help the client make thoughtful decisions and implement solutions that will help in the safe and successful development of his business.
           </p>
         </div>
-      </div>
+      </div> -->
       <figure class="solutions-figure">
         <img src="../assets/images/OQ5A0995.jpg" alt="Gotowe rozwiązania">
       </figure>

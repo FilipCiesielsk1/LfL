@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Monika Duszyńska • Law for Lifesciences</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css" media="screen and (min-width: 1020px)">
+  <link rel="stylesheet" href="assets/css/mobile style.css" media="screen and (max-width: 1019px)">
   <link rel="icon" href="assets/images/favicon.ico">
 
   <script defer src="assets/js/main.js"></script>
@@ -17,13 +18,21 @@
        <img src="assets/images/Logo_MD_RGB_no_bg.png" alt="Life for Sciences logo">
       </a>
     </div>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-menu" aria-label="Open menu">
+      <span class="bar" aria-hidden="true"></span>
+      <span class="bar" aria-hidden="true"></span>
+      <span class="bar" aria-hidden="true"></span>
+    </button>
     <nav>
-      <ul>
+
+      <ul id="primary-menu">
         <li><a href="kim-jestesmy.html">KIM JESTEŚMY</a></li>
         <li><a href="praktyka.html">PRAKTYKA</a></li>
         <li class="has-dropdown">
           <a href="dla-biznesu.html">DZIELIMY SIĘ WIEDZĄ</a>
-          <ul class="dropdown">
+          <button class="submenu-toggle" aria-expanded="false" aria-controls="submenu-expertise" aria-label="Toggle submenu"></button>
+          <ul class="dropdown" id="submenu-expertise">
             <li><a href="dla-biznesu.html">Dla Biznesu</a></li>
             <li><a href="publikacje-i-konferencje.html">Publikacje i konferencje naukowe</a></li>
             <li><a href="dla-lekarzy-i-decydujacych.html">Dla lekarzy i decydentów systemu</a></li>
@@ -31,13 +40,12 @@
           </ul>
         </li>
         <li><a href="kontakt.html">KONTAKT</a></li>
-        <li>
+        <li id="LI">
           <div class="header-social">
             <a href="https://www.linkedin.com/in/monika-duszy%C5%84ska-2bab84b/"
               target="_blank" rel="noopener"
               class="linkedin-btn">
               <img src="assets/images/linkedin.png" alt="LinkedIn icon">
-              
             </a>
           </div>
         </li>
@@ -127,7 +135,7 @@
     </section>
     
     <section class="practice-section gotowe-rozwiazania">
-      <h2>Gotowe rozwiązania</h2>
+      <!-- <h2>Gotowe rozwiązania</h2>
       <div class="two-col">
         <div class="solutions-text">
           <p>
@@ -139,7 +147,7 @@
             <b>Klient nie musi znać „kuchni”, tj. poglądów doktryny prawniczej</b>, a naszą rolą jest pomóc klientowi podejmować przemyślane decyzje i wdrażać rozwiązania, które pomogą w bezpiecznym i pomyślnym rozwoju jego biznesu.
           </p>
         </div>
-      </div>
+      </div> -->
       <figure class="solutions-figure">
         <img src="assets/images/OQ5A0995.jpg" alt="Gotowe rozwiązania">
       </figure>

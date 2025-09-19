@@ -333,3 +333,33 @@ document.addEventListener('DOMContentLoaded', () => {
   prevPtBtn.disabled = true;
   nextPtBtn.disabled = (totalPtPages <= 1);
 });
+
+
+  (function () {
+    const header = document.querySelector('header');
+    const navToggle = document.querySelector('.nav-toggle');
+    const menu = document.getElementById('primary-menu');
+
+    // otwieranie / zamykanie głównego menu
+    navToggle.addEventListener('click', () => {
+      const isOpen = header.classList.toggle('nav-open');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    // zamknij menu po kliknięciu linku
+    menu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        header.classList.remove('nav-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // obsługa akordeonu w dropdownie
+    menu.querySelectorAll('.has-dropdown .submenu-toggle').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const li = e.currentTarget.closest('.has-dropdown');
+        const nowOpen = li.classList.toggle('open');
+        btn.setAttribute('aria-expanded', String(nowOpen));
+      });
+    });
+  })();

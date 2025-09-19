@@ -9,7 +9,7 @@
   /* --color-accent:    #ff6f00; */
   --color-bg:        #ffffff;
   --color-text:      #212121;
-  --color-muted:     #d9d9d9;
+  --color-muted:     #b0b0b0;
   --color-less-muted:     #a1a1a1;
 
   /* TYPOGRAPHY */
@@ -59,7 +59,7 @@ button, input, select, textarea {
 }
 
 body {
-  min-height: 100vh;
+  /* min-height: 100vh; */
   text-rendering: optimizeLegibility;
   background-color: var(--color-bg);
   color: var(--color-text);
@@ -145,7 +145,7 @@ header.scrolled .logo img {
   transform: scale(1.04);
 }
 
-.nav-toggle, .submenu-toggle{display:none}
+
 
 nav li.has-dropdown {
   position: relative;
@@ -178,7 +178,7 @@ nav li .dropdown li {
 nav li .dropdown a {
   width: 100%;
   display: block;
-  padding: var(--space-md) var(--space-md);
+  padding: var(--space-sm) var(--space-md);
   font-size: var(--font-base-size);
   color: var(--color-text);
   white-space: nowrap;
@@ -188,6 +188,15 @@ nav li.has-dropdown:focus-within > .dropdown {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
+}
+
+.has-dropdown {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  width: 100%;
 }
 
 nav ul {
@@ -240,6 +249,7 @@ nav a:active::after,
 nav a:focus:not(:hover)::after {
   width: 0;
 }
+
 .header-social {
   display: flex;
   align-items: center;
@@ -330,7 +340,140 @@ header.scrolled .lang-switcher a {
 
 .linkedin-btn,
 .linkedin-btn img {
-  flex-shrink: 0;                /* najważniejsze: nie pozwól flexowi kurczyć */
+  flex-shrink: 0;
+}
+
+
+/* 1) Pokaż hamburger, ukryj menu domyślnie */
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  cursor: pointer;
+  margin-left: auto; /* pcha nav w prawo */
+}
+.nav-toggle .bar {
+  display: block;
+  width: 8px;
+  height: 2px;
+  margin: 3px 0;
+  background: var(--color-text);
+  transition: transform .25s ease, opacity .25s ease;
+}
+
+/* animacja na X gdy otwarte */
+header.nav-open .nav-toggle .bar:nth-child(1) { transform: translateY(5px) rotate(45deg); }
+header.nav-open .nav-toggle .bar:nth-child(2) { opacity: 0; }
+header.nav-open .nav-toggle .bar:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
+
+/* 2) Menu jako panel rozwijany spod headera */
+nav { position: relative; } /* zostawiamy w flow headera */
+#primary-menu {
+  position: absolute;
+  top: 100%;
+  right: -5%;
+  background: var(--color-bg);
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+  border-radius: var(--radius-sm);
+  display: none;            /* ukryte domyślnie */
+  flex-direction: column;
+  padding: var(--space-sm) 5%;
+  gap: 0;
+  z-index: 1000;
+}
+
+/* gdy otwarte */
+header.nav-open #primary-menu {
+  display: flex; 
+}
+
+/* 3) Elementy menu w kolumnie */
+nav li {
+  justify-content: space-between;
+  align-items: center;
+}
+nav a {
+  width: 100%;
+  padding: var(--space-sm) 0;
+  font-size: 1rem;
+}
+nav a::after { /* na mobile wyłączamy animowaną kreskę */
+  content: none;
+}
+
+/* 4) Dropdown na mobile: klikalny akordeon */
+.has-dropdown > a {
+  flex: 1 1 auto;          /* link po lewej */
+}
+.submenu-toggle{
+  order: 2;             /* wejdzie POD linkiem, nad dropdownem */
+  flex: 1 0 100%;       /* nowy wiersz, 100% szerokości */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+.submenu-toggle::before{
+  content: "▾";
+  display: block;
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: transform .2s ease;
+}
+.has-dropdown .dropdown {
+  position: static;
+  box-shadow: none;
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
+  visibility: hidden;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .3s ease, visibility .3s ease, padding .3s ease;
+}
+.has-dropdown.open .dropdown {
+  visibility: visible;
+  max-height: 600px;                 /* wystarczająco dużo dla zawartości */
+  padding: var(--space-xs) 0;
+}
+.has-dropdown.open > .submenu-toggle::before {
+  transform: rotate(180deg);
+}
+
+/* 5) Wyłącz desktopowy hover-dropdown na mobile */
+nav li.has-dropdown:hover > .dropdown,
+nav li.has-dropdown:focus-within > .dropdown {
+  opacity: 1; visibility: visible; transform: none; /* nie ma efektu hover */
+}
+
+.header-social { margin: var(--space-xs) 0; }
+.linkedin-btn { width: 90%; justify-content: center; }
+.lang-switcher { width: 100%; justify-content: center; padding-top: var(--space-xs); }
+
+#LI {
+  justify-content: center;
+}
+.has-dropdown > .submenu-toggle {
+  flex: 0 0 auto;
+  margin-left: var(--space-sm);
+}
+.has-dropdown > .dropdown {
+  position: static;     /* unieważnia desktopowe position:absolute */
+  order: 3;             /* idzie po linku i przycisku */
+  flex: 1 0 100%;       /* wymuś nowy wiersz i 100% szerokości */
+  width: 100%;
+  top: auto;
+  left: auto;
+  transform: none;
+  box-shadow: none;
 }
 /* ———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
    05 LAYOUT: HERO SECTION
@@ -715,16 +858,13 @@ header.scrolled .lang-switcher a {
 
 /* 07d AWARDS: rozbudowany grid wokół dwóch logotypów */
 .awards-section {
-  padding: var(--space-xl) 11% 0;
+  padding: var(--space-xl) 4% var(--space-xl) 4%;
   position: relative;
   overflow: hidden;
   background-color: transparent;
   transition: background-color 1.2s ease-out;
 }
-.awards-section-wrapper {
-  padding: var(--space-sm) 9% var(--space-xxl);
 
-}
 .awards-section.is-visible {
   background-color: rgba(73,0,147,0.05);
 }
@@ -783,10 +923,11 @@ header.scrolled .lang-switcher a {
 
 .logo-center {
   grid-area: logo;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr;
   align-items: center;
   justify-content: center;
-  gap: 70px;
+  gap: 30px;
   max-width: 600px
 }
 
@@ -794,11 +935,13 @@ header.scrolled .lang-switcher a {
   max-width: 220px;
   height: auto;
   transition: filter 0.3s ease, transform 0.3s ease;
+  justify-self: center;
 }
 .logo-center img.L500 {
-  max-width: 160px;
+  max-width: 220px;
   height: auto;
   transition: filter 0.3s ease, transform 0.3s ease;
+  justify-self: center;
 }
 .logo-center img:hover {
   transform: scale(1.05);
@@ -1610,7 +1753,7 @@ header.scrolled .lang-switcher a {
 
 .practice-section.co-robimy .two-col {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
+  grid-template-columns: 1fr;
   gap: var(--space-xl);
   align-items: stretch;
 }
@@ -1678,7 +1821,7 @@ header.scrolled .lang-switcher a {
 
 .practice-section.jak-pracujemy .two-col {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
+  grid-template-columns: 1fr;
   gap: var(--space-xl);
   align-items: stretch;
 }
@@ -1803,7 +1946,8 @@ header.scrolled .lang-switcher a {
 }
 
 .practice-section.gotowe-rozwiazania .two-col {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: var(--space-xl);
   align-items: start;
   justify-content: start;
@@ -1823,7 +1967,7 @@ header.scrolled .lang-switcher a {
 .practice-section.gotowe-rozwiazania .solutions-figure {
   display: flex;
   margin: var(--space-xl) 0 0 0;
-  padding: 0 var(--space-xxl);
+  padding: 0;
 }
 
 .practice-section.gotowe-rozwiazania .solutions-figure img {
@@ -1847,8 +1991,7 @@ header.scrolled .lang-switcher a {
 .contact-page {
   position: relative;
   background-color: var(--color-bg);
-  padding: var(--space-xl) 0 var(--space-xxl) 0;
-  min-height: calc(100vh - 200px); /* nagłówek + stopka */
+  padding: var(--space-xl) 0 calc(var(--space-xxl)*1.6) 0;
   color: var(--color-bg);
   text-align: center;        
 }
@@ -1867,7 +2010,7 @@ header.scrolled .lang-switcher a {
   flex-wrap: wrap;                    /* w razie małego ekranu przełożenie */
 }
 .contact-image {
-  flex: 0 0 48%;                      /* ok. 45% szerokości na obraz */
+  flex: 0 0 60%;                      /* ok. 45% szerokości na obraz */
   max-width: 5000px;                   /* ograniczamy maksymalną szerokość */
   position: relative;
 }
@@ -1886,12 +2029,12 @@ header.scrolled .lang-switcher a {
 }
 
 .contact-cards {
-  flex: 0 0 45%;                      /* ok. 45% szerokości na karty */
+  flex: 0 0 34%;                      /* ok. 45% szerokości na karty */
   max-width: 500px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: var(--space-lg);
+  gap: var(--space-md);
   max-width: 500px;
   padding: 0 var(--space-md);
 }
@@ -1900,7 +2043,7 @@ header.scrolled .lang-switcher a {
   background-color: var(--color-bg);
   color: var(--color-text);
   text-decoration: none;
-  padding: var(--space-lg) var(--space-xl);
+  padding: var(--space-md) var(--space-md);
   border-radius: var(--radius-sm);
   border-left: 6px solid var(--color-primary);
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);

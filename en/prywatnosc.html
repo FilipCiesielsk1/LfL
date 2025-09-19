@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Monika Duszyńska • Law for Lifesciences</title>
-  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/style.css" media="screen and (min-width: 1020px)">
+  <link rel="stylesheet" href="../assets/css/mobile style.css" media="screen and (max-width: 1019px)">
   <link rel="icon" href="../assets/images/favicon.ico">
 
   <script defer src="../assets/js/main.js"></script>
@@ -17,13 +18,19 @@
        <img src="../assets/images/Logo_MD_RGB_no_bg.png" alt="Life for Sciences logo">
       </a>
     </div>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-menu" aria-label="Open menu">
+      <span class="bar" aria-hidden="true"></span>
+      <span class="bar" aria-hidden="true"></span>
+      <span class="bar" aria-hidden="true"></span>
+    </button>
     <nav>
-      <ul>
+      <ul id="primary-menu">
         <li><a href="kim-jestesmy.html">WHO WE ARE</a></li>
         <li><a href="praktyka.html">PRACTICE AREAS</a></li>
         <li class="has-dropdown">
           <a href="dla-biznesu.html">SHARING OUR EXPERTISE</a>
-          <ul class="dropdown">
+          <button class="submenu-toggle" aria-expanded="false" aria-controls="submenu-expertise" aria-label="Toggle submenu"></button>
+          <ul class="dropdown" id="submenu-expertise">
             <li><a href="dla-biznesu.html">For Business</a></li>
             <li><a href="publikacje-i-konferencje.html">Scientific Publications and Conferences</a></li>
             <li><a href="dla-lekarzy-i-decydujacych.html">For the Physicians and Policy-Makers</a></li>
@@ -31,7 +38,7 @@
           </ul>
         </li>
         <li><a href="kontakt.html">CONTACT DETAILS</a></li>
-        <li>
+        <li id="LI">
           <div class="header-social">
             <a href="https://www.linkedin.com/in/monika-duszy%C5%84ska-2bab84b/"
               target="_blank" rel="noopener"
@@ -45,7 +52,7 @@
           <div class="lang-switcher">
             <a href="../prywatnosc.html">PL</a>
             <span aria-hidden="true">|</span>
-            <a href="en/prywatnosc.html" class="active">EN</a>
+            <a href="prywatnosc.html" class="active">EN</a>
           </div>
         </li>
       </ul>

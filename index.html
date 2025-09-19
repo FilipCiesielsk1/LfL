@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Monika Duszyńska • Law for Lifesciences</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css" media="screen and (min-width: 1020px)">
+  <link rel="stylesheet" href="assets/css/mobile style.css" media="screen and (max-width: 1019px)">
   <link rel="icon" href="assets/images/favicon.ico">
 
   <script defer src="assets/js/main.js"></script>
@@ -17,13 +18,21 @@
        <img src="assets/images/Logo_MD_RGB_no_bg.png" alt="Life for Sciences logo">
       </a>
     </div>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-menu" aria-label="Open menu">
+      <span class="bar" aria-hidden="true"></span>
+      <span class="bar" aria-hidden="true"></span>
+      <span class="bar" aria-hidden="true"></span>
+    </button>
     <nav>
-      <ul>
+
+      <ul id="primary-menu">
         <li><a href="kim-jestesmy.html">KIM JESTEŚMY</a></li>
         <li><a href="praktyka.html">PRAKTYKA</a></li>
         <li class="has-dropdown">
           <a href="dla-biznesu.html">DZIELIMY SIĘ WIEDZĄ</a>
-          <ul class="dropdown">
+          <button class="submenu-toggle" aria-expanded="false" aria-controls="submenu-expertise" aria-label="Toggle submenu"></button>
+          <ul class="dropdown" id="submenu-expertise">
             <li><a href="dla-biznesu.html">Dla Biznesu</a></li>
             <li><a href="publikacje-i-konferencje.html">Publikacje i konferencje naukowe</a></li>
             <li><a href="dla-lekarzy-i-decydujacych.html">Dla lekarzy i decydentów systemu</a></li>
@@ -31,7 +40,7 @@
           </ul>
         </li>
         <li><a href="kontakt.html">KONTAKT</a></li>
-        <li>
+        <li id="LI">
           <div class="header-social">
             <a href="https://www.linkedin.com/in/monika-duszy%C5%84ska-2bab84b/"
               target="_blank" rel="noopener"
@@ -57,10 +66,15 @@
   <section class="hero">
     <div class="hero-text">
       <div class="hero-quote">
-        <p>
+        <!-- <p>
           Mówimy <b>językiem biznesu</b>, nie paragrafów.<br>
           Wspieramy sektor farmaceutyczny i technologii medycznych.<br>
           Od budowania <b>wizji</b> i <b>strategii</b> po <b>konkretne rozwiązania</b>.
+        </p> -->
+        <p>
+          <b>Ekspertyza</b> poparta ponad <b>25 letnim doświadczeniem</b> – wsparcie, któremu możesz zaufać.
+          <br>Od budowania <b>strategii</b> <b>po konkretne rozwiązania dla sektora farmaceutycznego i technologii medycznych</b>.
+          <br>Mówimy <b>językiem biznesu</b>, nie paragrafów.
         </p>
         <footer>Monika Duszyńska</footer>
       </div>
@@ -87,19 +101,13 @@
           </div>
         </div>
         <div class="testimonial">
-          <p>Dążymy do tego, aby nasze porady były formułowane<br>
-            w sposób <b>zrozumiały</b> i&nbsp;<b>praktyczny</b> – tak, aby były użyteczne dla ludzi biznesu.
-          </p>
-          <p>Słuchamy, reagujemy i dostosowujemy nasze działania do zmieniających się&nbsp;potrzeb.
-          </p>
+          <p>Dążymy do tego, aby nasze porady były formułowane<br>w sposób <b>zrozumiały</b> i&nbsp;<b>praktyczny</b> – tak, aby były użyteczne dla ludzi biznesu.</p>
+          <p>Słuchamy, reagujemy i dostosowujemy nasze działania do zmieniających się&nbsp;potrzeb.</p>
           <p>Nasze cechy to <b>zaangażowanie</b>, <b>elastyczność</b> oraz gotowość<br>
-            do&nbsp;dostosowania się do stylu pracy i kultury korporacyjnej klienta.
-          </p>
+            do&nbsp;dostosowania się do stylu pracy i kultury korporacyjnej klienta.</p>
           <p>Z klientami, z którymi pracujemy długo i na co dzień,<br>
-            budujemy <b>trwałe relacje oparte na zaufaniu.</b>
-          </p>
-          <p>Dla jednego z naszych klientów pracujemy już <b>ponad 20 lat!</b>
-          </p>
+            budujemy <b>trwałe relacje oparte na zaufaniu.</b></p>
+          <p>Dla jednego z naszych klientów pracujemy już <b>ponad 20 lat!</b></p>
         </div>
       </div>
     </section>
