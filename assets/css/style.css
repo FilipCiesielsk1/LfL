@@ -83,7 +83,6 @@ h1, h2, h3, h4, h5, h6 {
 h1 { font-size: 2.5rem; margin-bottom: var(--space-md); }
 h2 { font-size: 3rem;   margin-bottom: var(--space-md); }
 h3 { font-size: 1.75rem; margin-bottom: var(--space-sm); }
-/* … można dodać kolejne, jeśli potrzebne */
 
 /* Linki */
 a {
@@ -336,17 +335,11 @@ header.scrolled .lang-switcher a {
    05 LAYOUT: HERO SECTION
    ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————— */
 .hero-test {
-  /* Ścieżka do pliku z obrazem */
   background-image: url("../images/index-bg.jpg");
-  /* Dopasowanie rozmiaru obrazka do boxa */
   background-size: cover;
-  /* Wyśrodkowanie obrazka w poziomie i pionie */
   background-position: top, center;
-  /* Nie powtarzaj obrazka */
   background-repeat: no-repeat;
-  /* (opcjonalnie) kolor tła, póki obrazek się załaduje */
   background-color: #f0f0f0;
-  /* (opcjonalnie) wysokość sekcji */
   min-height: 600px;
 }
 
@@ -378,7 +371,7 @@ header.scrolled .lang-switcher a {
   flex-direction: column;    /* układ jeden pod drugim */
   justify-content: end; /* pierwszy cytat u góry, drugi u dołu */
   /* max-width: 42ch; */
-  max-width: 90ch;
+  max-width: 75ch;
 }
 
 .hero-quote {
@@ -392,11 +385,11 @@ header.scrolled .lang-switcher a {
 
 .hero-quote p {
   font-size: 1.6rem;
-  margin: 0; /* usuń dodatkowe marginesy, jeśli gdzieś były */
+  margin: 0;
 }
 
 .hero-quote + .hero-quote {
-  margin-top: var(--space-lg); /* odstęp między kolejnymi cytatami */
+  margin-top: var(--space-lg);
 }
 
 .hero-quote footer {
